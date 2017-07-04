@@ -32,7 +32,7 @@ table { border: none; }a
     <input type="submit" value="Find" class="pure-button pure-button-primary">
 </form>
 
-<div class="pure-g" style="max-width: 768px;margin: 0 auto;">
+<div class="pure-g" style="max-width: 600px;margin: 0 auto;">
     <div class="pure-u-1 pure-u-md-1-2">
         <h2>Oka</h2>
         <table style="text-align:left;margin:auto">
