@@ -14,12 +14,8 @@ L' R' U R' (U face)
 
 ### Find best Keyhole start(s)
 ```
-$ python3 findoka.py "U' B' R U' B U' B R' U' R U' u' l' r'"
-R' B U' (B face)
-B U' R' B (U face)
-B R' U' B (U face)
-R U' B' R (B face)
-R' B U' B (U face)
+$ python3 findkeyhole.py "U' B' R U' B U' B R' U' R U' u' l' r'"
+U' R' (B face)
 ```
 
 ## Requirement
