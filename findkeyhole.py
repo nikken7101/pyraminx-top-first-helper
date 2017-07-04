@@ -6,6 +6,9 @@ import sys
 
 
 def findkeyhole(scramble):
+    scrambled = Pyraminx(scramble)
+    if scrambled.is_solved() or any([scrambled.is_keyhole_solved(f) for f in faces]):
+        return []
     q = queue.Queue()
     for m in all_turns:
         q.put([m])
