@@ -1,6 +1,9 @@
-# Pyraminx-top-first-helper
+# Pyraminx Top First Helper
 
-Pyraminx-top-first-helper will find best starts with Oka method and Keyhole method.
+Pyraminx Top First Helper will find best starts with Oka method and Keyhole method.
+
+## Demo
+http://topfirst.ni-ken.net/
 
 ## Usage
 ### Find best Oka start(s)
@@ -24,7 +27,9 @@ U' R' (B face)
   - bottles (for demo)
 
 ## Author
-Kentaro Nishi (WCA ID: [2006NISH01](https://www.worldcubeassociation.org/persons/2006NISH01))
+Kentaro Nishi
+(WCA ID: [2006NISH01](https://www.worldcubeassociation.org/persons/2006NISH01),
+Twitter: [@7y2n](https://twitter.com/7y2n))
 
 ## License
 [MIT](https://github.com/nikken7101/pyraminx-top-first-helper/blob/master/LICENSE)
