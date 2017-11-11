@@ -83,7 +83,7 @@ class Pyraminx:
         edge_permutations = itertools.permutations(self._edges[face])
         for (e0, e1, e2) in edge_permutations:
             e0_solved = self.state.ep[e0] == e0 and self.state.eo[e0] == 0
-            desired_flip = 1 if (e1, e2) in should_be_flipped or (e2, e2) in should_be_flipped else 0
+            desired_flip = 1 if (e1, e2) in should_be_flipped or (e2, e1) in should_be_flipped else 0
             e1_solved = self.state.ep[e1] == e2 and self.state.eo[e1] == desired_flip
             if e0_solved and e1_solved:
                 return True
