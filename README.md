@@ -21,7 +21,7 @@ $ python3 findkeyhole.py "U' B' R U' B U' B R' U' R U' u' l' r'"
 U' R' (B face)
 ```
 
-### Find best Best Bell start(s)
+### Find best Bell start(s)
 ```
 $ python3 findbell.py "U' L B U B L U B' l  b' "
 L B' U' (B face)
