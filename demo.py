@@ -4,6 +4,7 @@ from bottle import route, run, default_app
 from bottle import request, template
 from findkeyhole import findkeyhole
 from findoka import findoka
+from findbell import findbell
 from pyraminx import all_turns
 
 
@@ -17,10 +18,14 @@ def demo():
     kh_solutions = findkeyhole(scramble_seq)
     kh_solutions_texts = [(" ".join(turns) if len(turns) != 0 else "Solved!") + " ({} face)".format(face)
                           for turns, face in kh_solutions]
+    bell_solutions = findbell(scramble_seq)
+    bell_solutions_texts = [(" ".join(turns) if len(turns) != 0 else "Solved!") + " ({} face)".format(face)
+                          for turns, face in bell_solutions]
     return template("demo",
                     scramble=" ".join(scramble_seq),
                     oka_solutions=oka_solutions_texts,
-                    kh_solutions=kh_solutions_texts)
+                    kh_solutions=kh_solutions_texts,
+                    bell_solutions=bell_solutions_texts)
 
 if __name__ == '__main__':
     run(host='0.0.0.0', port=51080, debug=True)
