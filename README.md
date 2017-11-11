@@ -1,6 +1,6 @@
 # Pyraminx Top First Helper
 
-Pyraminx Top First Helper will find best starts with Oka method and Keyhole method.
+Pyraminx Top First Helper will find best starts with top-first methods.
 
 ## Demo
 http://topfirst.ni-ken.net/
@@ -19,6 +19,12 @@ L' R' U R' (U face)
 ```
 $ python3 findkeyhole.py "U' B' R U' B U' B R' U' R U' u' l' r'"
 U' R' (B face)
+```
+
+### Find best Best Bell start(s)
+```
+$ python3 findbell.py "U' L B U B L U B' l  b' "
+L B' U' (B face)
 ```
 
 ## Requirement
