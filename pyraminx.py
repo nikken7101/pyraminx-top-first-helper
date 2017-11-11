@@ -79,11 +79,11 @@ class Pyraminx:
     def is_oka_solved(self, face):
         if not self.is_center_solved():
             return False
-        should_be_fliped = [(0, 3), (1, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
+        should_be_flipped = [(0, 3), (1, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
         edge_permutations = itertools.permutations(self._edges[face])
         for (e0, e1, e2) in edge_permutations:
             e0_solved = self.state.ep[e0] == e0 and self.state.eo[e0] == 0
-            desired_flip = 1 if (e1, e2) in should_be_fliped or (e2, e2) in should_be_fliped else 0
+            desired_flip = 1 if (e1, e2) in should_be_flipped or (e2, e2) in should_be_flipped else 0
             e1_solved = self.state.ep[e1] == e2 and self.state.eo[e1] == desired_flip
             if e0_solved and e1_solved:
                 return True
