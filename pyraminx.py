@@ -89,6 +89,19 @@ class Pyraminx:
                 return True
         return False
 
+    def is_bell_solved(self, face):
+        if not self.is_center_solved():
+            return False
+        should_not_be_flipped = [(0, 3), (1, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
+        edge_permutations = itertools.permutations(self._edges[face])
+        for (e0, e1, e2) in edge_permutations:
+            e0_solved = self.state.ep[e0] == e0 and self.state.eo[e0] == 0
+            desired_flip = 0 if (e1, e2) in should_not_be_flipped or (e2, e1) in should_not_be_flipped else 1
+            e1_solved = self.state.ep[e1] == e2 and self.state.eo[e1] == desired_flip
+            if e0_solved and e1_solved:
+                return True
+        return False
+
     def is_keyhole_solved(self, face):
         if not self.is_center_solved():
             return False
