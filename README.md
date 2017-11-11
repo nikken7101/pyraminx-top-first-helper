@@ -34,7 +34,8 @@ L B' U' (B face)
 
 ## Author
 Kentaro Nishi
-(WCA ID: [2006NISH01](https://www.worldcubeassociation.org/persons/2006NISH01),
+(GitHub: [nikken7101](https://github.com/nikken7101)
+WCA ID: [2006NISH01](https://www.worldcubeassociation.org/persons/2006NISH01),
 Twitter: [@7y2n](https://twitter.com/7y2n))
 
 ## License
