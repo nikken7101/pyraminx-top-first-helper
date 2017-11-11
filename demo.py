@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 from bottle import route, run, default_app
 from bottle import request, template
-from findkeyhole import findkeyhole
-from findoka import findoka
+from findall import findall
 from pyraminx import all_turns
 
 
@@ -11,16 +10,25 @@ from pyraminx import all_turns
 def demo():
     scramble = request.query.scramble
     scramble_seq = [x for x in scramble.split(" ") if x.upper() in all_turns]
-    oka_solutions = findoka(scramble_seq)
+    if not scramble_seq:
+        return template("demo",
+                        scramble="",
+                        oka_solutions=[],
+                        kh_solutions=[],
+                        bell_solutions=[])
+    solutions = findall(scramble_seq)
     oka_solutions_texts = [(" ".join(turns) if len(turns) != 0 else "Solved!") + " ({} face)".format(face)
-                           for turns, face in oka_solutions]
-    kh_solutions = findkeyhole(scramble_seq)
+                           for turns, face, method in solutions if method == "oka"]
     kh_solutions_texts = [(" ".join(turns) if len(turns) != 0 else "Solved!") + " ({} face)".format(face)
-                          for turns, face in kh_solutions]
+                          for turns, face, method in solutions if method == "keyhole"]
+    bell_solutions_texts = [(" ".join(turns) if len(turns) != 0 else "Solved!") + " ({} face)".format(face)
+                            for turns, face, method in solutions if method == "bell"]
     return template("demo",
                     scramble=" ".join(scramble_seq),
                     oka_solutions=oka_solutions_texts,
-                    kh_solutions=kh_solutions_texts)
+                    kh_solutions=kh_solutions_texts,
+                    bell_solutions=bell_solutions_texts)
+
 
 if __name__ == '__main__':
     run(host='0.0.0.0', port=51080, debug=True)
