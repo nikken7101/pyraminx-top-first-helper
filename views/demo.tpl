@@ -32,8 +32,8 @@ table { border: none; }a
     <input type="submit" value="Find" class="pure-button pure-button-primary">
 </form>
 
-<div class="pure-g" style="max-width: 600px;margin: 0 auto;">
-    <div class="pure-u-1 pure-u-md-1-2">
+<div class="pure-g" style="max-width: 700px;margin: 0 auto;">
+    <div class="pure-u-1 pure-u-md-1-3">
         <h2>Oka</h2>
         <table style="text-align:left;margin:auto">
             <tbody>
@@ -45,11 +45,23 @@ table { border: none; }a
             </tbody>
         </table>
     </div>
-    <div class="pure-u-1 pure-u-md-1-2">
+    <div class="pure-u-1 pure-u-md-1-3">
         <h2>Keyhole</h2>
         <table style="text-align:left;margin:auto">
             <tbody>
             % for x in kh_solutions:
+            <tr>
+                <td>{{x}}</td>
+            </tr>
+            % end
+            </tbody>
+        </table>
+    </div>
+        <div class="pure-u-1 pure-u-md-1-3">
+        <h2>Keyhole</h2>
+        <table style="text-align:left;margin:auto">
+            <tbody>
+            % for x in bell_solutions:
             <tr>
                 <td>{{x}}</td>
             </tr>
