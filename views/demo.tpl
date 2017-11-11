@@ -27,13 +27,13 @@ table { border: none; }a
 <body>
 <h1>Pyraminx Top First Helper</h1>
 <form class="pure-form pure-form-stacked" style="display: inline-block;">
-    <input id="scramble" type="text" name="scramble" size="30" maxlength="40" placeholder="Input your scramble"
+    <input id="scramble" type="text" name="scramble" size="30" maxlength="40" placeholder="Input scramble"
            value="{{scramble}}">
-    <input type="submit" value="Find" class="pure-button pure-button-primary">
+    <input type="submit" value="Search" class="pure-button pure-button-primary">
 </form>
 
-<div class="pure-g" style="max-width: 600px;margin: 0 auto;">
-    <div class="pure-u-1 pure-u-md-1-2">
+<div class="pure-g" style="max-width: 700px;margin: 0 auto;">
+    <div class="pure-u-1 pure-u-md-1-3">
         <h2>Oka</h2>
         <table style="text-align:left;margin:auto">
             <tbody>
@@ -45,11 +45,23 @@ table { border: none; }a
             </tbody>
         </table>
     </div>
-    <div class="pure-u-1 pure-u-md-1-2">
+    <div class="pure-u-1 pure-u-md-1-3">
         <h2>Keyhole</h2>
         <table style="text-align:left;margin:auto">
             <tbody>
             % for x in kh_solutions:
+            <tr>
+                <td>{{x}}</td>
+            </tr>
+            % end
+            </tbody>
+        </table>
+    </div>
+        <div class="pure-u-1 pure-u-md-1-3">
+        <h2>Bell</h2>
+        <table style="text-align:left;margin:auto">
+            <tbody>
+            % for x in bell_solutions:
             <tr>
                 <td>{{x}}</td>
             </tr>
