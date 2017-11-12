@@ -10,6 +10,7 @@ from pyraminx import all_turns
 def demo():
     scramble = request.query.scramble
     scramble_seq = [x for x in scramble.split(" ") if x.upper() in all_turns]
+    print("Scramble: " + " ".join(scramble_seq))
     if not scramble_seq:
         return template("demo",
                         scramble="",
@@ -17,11 +18,11 @@ def demo():
                         kh_solutions=[],
                         bell_solutions=[])
     solutions = findall(scramble_seq)
-    oka_solutions_texts = [(" ".join(turns) if len(turns) != 0 else "Solved!") + " ({} face)".format(face)
+    oka_solutions_texts = [(" ".join(turns) if len(turns) != 0 else "Solved!") + " ({} top)".format(face)
                            for turns, face, method in solutions if method == "oka"]
-    kh_solutions_texts = [(" ".join(turns) if len(turns) != 0 else "Solved!") + " ({} face)".format(face)
+    kh_solutions_texts = [(" ".join(turns) if len(turns) != 0 else "Solved!") + " ({} top)".format(face)
                           for turns, face, method in solutions if method == "keyhole"]
-    bell_solutions_texts = [(" ".join(turns) if len(turns) != 0 else "Solved!") + " ({} face)".format(face)
+    bell_solutions_texts = [(" ".join(turns) if len(turns) != 0 else "Solved!") + " ({} top)".format(face)
                             for turns, face, method in solutions if method == "bell"]
     return template("demo",
                     scramble=" ".join(scramble_seq),
