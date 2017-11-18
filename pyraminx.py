@@ -34,6 +34,11 @@ class State:
 
 
 class Pyraminx:
+    _center = {'U': 0,
+              'L': 1,
+              'R': 2,
+              'B': 3}
+
     _edges = {'U': [0, 1, 2],
               'L': [0, 3, 5],
               'R': [1, 3, 4],
@@ -111,4 +116,21 @@ class Pyraminx:
             e1_solved = self.state.ep[e1] == e1 and self.state.eo[e1] == 0
             if e0_solved and e1_solved:
                 return True
+        return False
+
+    def is_1flip_solved(self, face):
+        center_solved =  self.state.centers[self._center[face]] == 0
+        (e0, e1, e2) = self._edges[face]
+        e0_p_solved = self.state.ep[e0] == e0
+        e1_p_solved = self.state.ep[e1] == e1
+        e2_p_solved = self.state.ep[e2] == e2
+        e0_o = self.state.eo[e0]
+        e1_o = self.state.eo[e1]
+        e2_o = self.state.eo[e2]
+        eo_solved = ((e0_o == 1 and e1_o == 0 and e2_o == 0) or
+                     (e0_o == 0 and e1_o == 1 and e2_o == 0) or
+                     (e0_o == 0 and e1_o == 0 and e2_o == 1))
+
+        if center_solved and e0_p_solved and e1_p_solved and e2_p_solved and eo_solved:
+            return True
         return False
