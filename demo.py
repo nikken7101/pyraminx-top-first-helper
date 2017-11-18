@@ -16,7 +16,8 @@ def demo():
                         scramble="",
                         oka_solutions=[],
                         kh_solutions=[],
-                        bell_solutions=[])
+                        bell_solutions=[],
+                        oneflip_solutions=[])
     solutions = findall(scramble_seq)
     oka_solutions_texts = [(" ".join(turns) if len(turns) != 0 else "Solved!") + " ({} top)".format(face)
                            for turns, face, method in solutions if method == "oka"]
@@ -24,11 +25,14 @@ def demo():
                           for turns, face, method in solutions if method == "keyhole"]
     bell_solutions_texts = [(" ".join(turns) if len(turns) != 0 else "Solved!") + " ({} top)".format(face)
                             for turns, face, method in solutions if method == "bell"]
+    oneflip_solutions_texts = [(" ".join(turns) if len(turns) != 0 else "Solved!") + " ({} top)".format(face)
+                               for turns, face, method in solutions if method == "1flip"]
     return template("demo",
                     scramble=" ".join(scramble_seq),
                     oka_solutions=oka_solutions_texts,
                     kh_solutions=kh_solutions_texts,
-                    bell_solutions=bell_solutions_texts)
+                    bell_solutions=bell_solutions_texts,
+                    oneflip_solutions=oneflip_solutions_texts)
 
 
 if __name__ == '__main__':
