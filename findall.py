@@ -14,7 +14,8 @@ def findall(scramble):
             is_oka_solved = pyra.is_oka_solved(face)
             is_keyhole_solved = pyra.is_keyhole_solved(face)
             is_bell_solved = pyra.is_bell_solved(face)
-            if is_oka_solved or is_keyhole_solved or is_bell_solved:
+            is_1flip_solved = pyra.is_1flip_solved(face)
+            if is_oka_solved or is_keyhole_solved or is_bell_solved or is_1flip_solved:
                 auf_ignored_turns = turns[:-1] if len(turns) > 1 and turns[-1][0] == face else turns
                 if is_oka_solved:
                     ret.append((auf_ignored_turns, face, "oka"))
@@ -22,6 +23,8 @@ def findall(scramble):
                     ret.append((auf_ignored_turns, face, "keyhole"))
                 if is_bell_solved:
                     ret.append((auf_ignored_turns, face, "bell"))
+                if is_1flip_solved:
+                    ret.append((auf_ignored_turns, face, "1flip"))
         return ret
 
     solved_info = get_solved_info([])
