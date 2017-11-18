@@ -27,6 +27,12 @@ $ python3 findbell.py "U' L B U B L U B' l  b' "
 L B' U' (B face)
 ```
 
+### Find best 1-flip start(s)
+```
+$ python3 find1flip.py "U' L B U B L U B' l  b'"
+U B' U' (B face)
+```
+
 ## Requirement
 - Python 3
   - numpy
