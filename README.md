@@ -29,8 +29,8 @@ L B' U' (B face)
 
 ### Find best 1-flip start(s)
 ```
-$ python3 find1flip.py "U' L B U B L U B' l  b'"
-U B' U' (B face)
+$ python3 ./find1flip.py "L' B L' B L' R' U B L' R L l' b"
+B U' R (U face)
 ```
 
 ## Requirement

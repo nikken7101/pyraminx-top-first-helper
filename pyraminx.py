@@ -119,7 +119,12 @@ class Pyraminx:
         return False
 
     def is_1flip_solved(self, face):
-        center_solved =  self.state.centers[self._center[face]] == 0
+        center_solved = self.state.centers[self._center[face]] == 0
+        dface_centers = list(self._center.values())
+        dface_centers.remove(self._center[face])
+        dface_center_twists = list(self.state.centers[dface_centers])
+        center_twists_good = any([x == dface_center_twists for x in
+                                 [[0, 1, 1], [0, 2, 2], [1, 0, 1], [2, 0, 2], [1, 1, 0], [2, 2, 0]]])
         (e0, e1, e2) = self._edges[face]
         e0_p_solved = self.state.ep[e0] == e0
         e1_p_solved = self.state.ep[e1] == e1
@@ -130,7 +135,6 @@ class Pyraminx:
         eo_solved = ((e0_o == 1 and e1_o == 0 and e2_o == 0) or
                      (e0_o == 0 and e1_o == 1 and e2_o == 0) or
                      (e0_o == 0 and e1_o == 0 and e2_o == 1))
-
-        if center_solved and e0_p_solved and e1_p_solved and e2_p_solved and eo_solved:
+        if center_solved and e0_p_solved and e1_p_solved and e2_p_solved and eo_solved and center_twists_good:
             return True
         return False
