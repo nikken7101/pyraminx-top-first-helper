@@ -118,6 +118,18 @@ class Pyraminx:
                 return True
         return False
 
+    def is_intuitive_solved(self, face):
+        if not self.is_center_solved():
+            return False
+        (e0, e1, e2) = self._edges[face]
+        e0_p_solved = self.state.ep[e0] == e0
+        e1_p_solved = self.state.ep[e1] == e1
+        e2_p_solved = self.state.ep[e2] == e2
+        eo_solved = self.state.eo[e0] == 0 and self.state.eo[e1] == 0 and self.state.eo[e2] == 0
+        if e0_p_solved and e1_p_solved and e2_p_solved and eo_solved:
+            return True
+        return False
+
     def is_1flip_solved(self, face):
         center_solved = self.state.centers[self._center[face]] == 0
         dface_centers = list(self._center.values())

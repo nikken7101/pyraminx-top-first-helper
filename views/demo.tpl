@@ -32,8 +32,8 @@ table { border: none; }a
     <input type="submit" value="Search" class="pure-button pure-button-primary">
 </form>
 
-<div class="pure-g" style="max-width: 700px;margin: 0 auto;">
-    <div class="pure-u-1 pure-u-md-1-4">
+<div class="pure-g" style="max-width: 800px;margin: 0 auto;">
+    <div class="pure-u-1 pure-u-md-1-5">
         <h2>Oka</h2>
         <table style="text-align:left;margin:auto">
             <tbody>
@@ -45,7 +45,7 @@ table { border: none; }a
             </tbody>
         </table>
     </div>
-    <div class="pure-u-1 pure-u-md-1-4">
+    <div class="pure-u-1 pure-u-md-1-5">
         <h2>Keyhole</h2>
         <table style="text-align:left;margin:auto">
             <tbody>
@@ -57,7 +57,7 @@ table { border: none; }a
             </tbody>
         </table>
     </div>
-    <div class="pure-u-1 pure-u-md-1-4">
+    <div class="pure-u-1 pure-u-md-1-5">
         <h2>Bell</h2>
         <table style="text-align:left;margin:auto">
             <tbody>
@@ -69,11 +69,23 @@ table { border: none; }a
             </tbody>
         </table>
     </div>
-    <div class="pure-u-1 pure-u-md-1-4">
+    <div class="pure-u-1 pure-u-md-1-5">
         <h2>1-flip</h2>
         <table style="text-align:left;margin:auto">
             <tbody>
             % for x in oneflip_solutions:
+            <tr>
+                <td>{{x}}</td>
+            </tr>
+            % end
+            </tbody>
+        </table>
+    </div>
+    <div class="pure-u-1 pure-u-md-1-5">
+        <h2>Intuitive</h2>
+        <table style="text-align:left;margin:auto">
+            <tbody>
+            % for x in intuitive_solutions:
             <tr>
                 <td>{{x}}</td>
             </tr>
