@@ -33,6 +33,12 @@ $ python3 ./find1flip.py "L' B L' B L' R' U B L' R L l' b"
 B U' R (U face)
 ```
 
+## Find best intuitive starts(s)
+```
+$ python3 ./findintuitive.py "U' L B U R L u"
+R B L R B (R face)
+```
+
 ## Requirement
 - Python 3
   - numpy
