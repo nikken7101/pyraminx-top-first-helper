@@ -18,7 +18,8 @@ def demo():
                         kh_solutions=[],
                         bell_solutions=[],
                         oneflip_solutions=[],
-                        intuitive_solutions=[])
+                        intuitive_solutions=[],
+                        v_solutions=[])
     solutions = findall(scramble_seq)
     oka_solutions_texts = [(" ".join(turns) if len(turns) != 0 else "Solved!") + " ({} top)".format(face)
                            for turns, face, method in solutions if method == "oka"]
@@ -30,13 +31,16 @@ def demo():
                                for turns, face, method in solutions if method == "1flip"]
     intuitive_solutions_texts = [(" ".join(turns) if len(turns) != 0 else "Solved!") + " ({} top)".format(face)
                                  for turns, face, method in solutions if method == "intuitive"]
+    v_solutions_texts = [(" ".join(turns) if len(turns) != 0 else "Solved!") + " ({} face)".format(face)
+                         for turns, face, method in solutions if method == "v-first"]
     return template("demo",
                     scramble=" ".join(scramble_seq),
                     oka_solutions=oka_solutions_texts,
                     kh_solutions=kh_solutions_texts,
                     bell_solutions=bell_solutions_texts,
                     oneflip_solutions=oneflip_solutions_texts,
-                    intuitive_solutions=intuitive_solutions_texts)
+                    intuitive_solutions=intuitive_solutions_texts,
+                    v_solutions=v_solutions_texts)
 
 
 if __name__ == '__main__':

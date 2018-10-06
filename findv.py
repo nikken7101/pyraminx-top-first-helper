@@ -4,10 +4,16 @@ from pyraminx import Pyraminx, all_turns, faces
 import queue
 import sys
 
+opposite_face = {
+    "U": "D",
+    "R": "L",
+    "L": "R",
+    "B": "F"
+}
 
-def findintuitive(scramble):
+def findv(scramble):
     scrambled = Pyraminx(scramble)
-    if scrambled.is_solved() or any([scrambled.is_intuitive_solved(f) for f in faces]):
+    if scrambled.is_solved() or any([scrambled.is_keyhole_solved(f) for f in faces]):
         return []
     q = queue.Queue()
     for m in all_turns:
@@ -20,9 +26,8 @@ def findintuitive(scramble):
             break
         pyra = Pyraminx(scramble).move(turns)
         for face in faces:
-            if pyra.is_intuitive_solved(face):
-                auf_ignored_turns = turns[:-1] if turns[-1][0] == face else turns
-                ret.append((auf_ignored_turns, face))
+            if pyra.is_v_solved(face):
+                ret.append((turns, face))
                 solution_length = len(turns)
         for m in all_turns:
             if turns[-1][0] != m[0]:
@@ -31,5 +36,5 @@ def findintuitive(scramble):
 
 
 if __name__ == '__main__':
-    answer = findintuitive([x for x in sys.argv[1].split(" ") if x != ""])
-    print("\n".join([" ".join(turns) + " ({} top)".format(face) for turns, face in answer]))
+    answer = findv([x for x in sys.argv[1].split(" ") if x != ""])
+    print("\n".join([" ".join(turns) + " ({} face)".format(opposite_face[face]) for turns, face in answer]))

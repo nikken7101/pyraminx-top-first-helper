@@ -32,4 +32,4 @@ def findkeyhole(scramble):
 
 if __name__ == '__main__':
     answer = findkeyhole([x for x in sys.argv[1].split(" ") if x != ""])
-    print("\n".join([" ".join(turns) + " ({} face)".format(face) for turns, face in answer]))
+    print("\n".join([" ".join(turns) + " ({} top)".format(face) for turns, face in answer]))
