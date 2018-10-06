@@ -150,3 +150,15 @@ class Pyraminx:
         if center_solved and e0_p_solved and e1_p_solved and e2_p_solved and eo_solved and center_twists_good:
             return True
         return False
+
+    def is_v_solved(self, top):
+        u_edges = self._edges[top]
+        d_edges = [e for e in range(0, 6) if e not in u_edges]
+        solved_d_edges = [e for e in d_edges if self.state.eo[e] == 0 and self.state.ep[e] == e]
+        edge_ok = len(solved_d_edges) >= 2
+
+        u_center = self._center[top]
+        d_centers = [c for c in range(0, 4) if c != u_center]
+        center_ok = all([self.state.centers[c] == 0 for c in d_centers])
+
+        return edge_ok and center_ok

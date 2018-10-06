@@ -5,6 +5,13 @@ import sys
 
 from pyraminx import Pyraminx, all_turns, faces
 
+opposite_face = {
+    "U": "D",
+    "R": "L",
+    "L": "R",
+    "B": "F"
+}
+
 
 def findall(scramble):
     def get_solved_info(turns):
@@ -16,7 +23,9 @@ def findall(scramble):
             is_bell_solved = pyra.is_bell_solved(face)
             is_1flip_solved = pyra.is_1flip_solved(face)
             is_intuitive_solved = pyra.is_intuitive_solved(face)
-            if is_oka_solved or is_keyhole_solved or is_bell_solved or is_1flip_solved or is_intuitive_solved:
+            is_v_solved = pyra.is_v_solved(face)
+            if (is_oka_solved or is_keyhole_solved or is_bell_solved or
+                    is_1flip_solved or is_intuitive_solved or is_v_solved):
                 auf_ignored_turns = turns[:-1] if len(turns) > 1 and turns[-1][0] == face else turns
                 if is_oka_solved:
                     ret.append((auf_ignored_turns, face, "oka"))
@@ -28,6 +37,8 @@ def findall(scramble):
                     ret.append((auf_ignored_turns, face, "1flip"))
                 if is_intuitive_solved:
                     ret.append((auf_ignored_turns, face, "intuitive"))
+                if is_v_solved:
+                    ret.append((auf_ignored_turns, opposite_face[face], "v-first"))
         return ret
 
     solved_info = get_solved_info([])
@@ -54,4 +65,4 @@ def findall(scramble):
 
 if __name__ == '__main__':
     answer = findall([x for x in sys.argv[1].split(" ") if x != ""])
-    print("\n".join([" ".join(turns) + " ({} face, {} method)".format(face, method) for turns, face, method in answer]))
+    print("\n".join([" ".join(turns) + " ({}, {} method)".format(face, method) for turns, face, method in answer]))
